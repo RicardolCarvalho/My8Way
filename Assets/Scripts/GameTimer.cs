@@ -52,4 +52,18 @@ public class GameTimer : MonoBehaviour
     public void StopTimer() { stopped = true; }
 
     public string CurrentFormatted() { return Format(remaining); }
+    public string ElapsedFormatted()
+    {
+        float elapsed = Mathf.Max(0f, startSeconds - remaining);
+        return Format(elapsed);
+    }
+
+    public void AddBonus(float seconds)
+    {
+        if (timeOver || stopped) return;
+
+        remaining += seconds;
+        if (remaining < 0f) remaining = 0f;
+        UpdateUI();
+    }
 }
