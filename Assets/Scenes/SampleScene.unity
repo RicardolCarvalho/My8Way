@@ -3808,8 +3808,16 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6269133195348543726, guid: 4a4960deccbc9c64db6d5cadb6bf6ffe, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269133195348543726, guid: 4a4960deccbc9c64db6d5cadb6bf6ffe, type: 3}
       propertyPath: m_Simulated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269133195348543726, guid: 4a4960deccbc9c64db6d5cadb6bf6ffe, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6269133195348543726, guid: 4a4960deccbc9c64db6d5cadb6bf6ffe, type: 3}
       propertyPath: m_GravityScale

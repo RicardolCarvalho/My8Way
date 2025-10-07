@@ -6,6 +6,7 @@ public class GameTimer : MonoBehaviour
     public float startSeconds = 60f;
     public TextMeshProUGUI timerText;
     private float remaining;
+    private float elapsed;
     public static bool timeOver;
     private bool stopped;
 
@@ -14,20 +15,21 @@ public class GameTimer : MonoBehaviour
         remaining = startSeconds;
         timeOver = false;
         stopped = false;
+        elapsed = 0f;
         UpdateUI();
     }
 
     void Update()
     {
-        if (GameController.gameOver)
-        {
+        if (GameController.gameOver){
             stopped = true;
         }
 
         if (stopped || timeOver) return;
 
-        remaining -= Time.deltaTime;
+        elapsed += Time.deltaTime;
 
+        remaining -= Time.deltaTime;
         if (remaining <= 0f)
         {
             remaining = 0f;
@@ -44,6 +46,7 @@ public class GameTimer : MonoBehaviour
 
     string Format(float t)
     {
+        if (t < 0f) t = 0f;
         int m = (int)(t / 60f);
         int s = (int)(t % 60f);
         return m.ToString("00") + ":" + s.ToString("00");
@@ -51,10 +54,11 @@ public class GameTimer : MonoBehaviour
 
     public void StopTimer() { stopped = true; }
 
-    public string CurrentFormatted() { return Format(remaining); }
-    public string ElapsedFormatted()
-    {
-        float elapsed = Mathf.Max(0f, startSeconds - remaining);
+    public string CurrentFormatted(){
+        return Format(remaining);
+    }
+
+    public string ElapsedFormatted(){
         return Format(elapsed);
     }
 
